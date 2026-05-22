@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ── CUSTOM CURSOR ── */
-  const cursor   = document.querySelector('.cursor');
+  const cursor = document.querySelector('.cursor');
   const follower = document.querySelector('.cursor-follower');
 
   if (cursor && follower && window.innerWidth > 768) {
@@ -20,14 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('mousemove', e => {
       cx = e.clientX; cy = e.clientY;
       cursor.style.left = cx + 'px';
-      cursor.style.top  = cy + 'px';
+      cursor.style.top = cy + 'px';
     });
 
     const followMouse = () => {
       fx += (cx - fx) * 0.12;
       fy += (cy - fy) * 0.12;
       follower.style.left = fx + 'px';
-      follower.style.top  = fy + 'px';
+      follower.style.top = fy + 'px';
       requestAnimationFrame(followMouse);
     };
     followMouse();
@@ -35,15 +35,15 @@ document.addEventListener('DOMContentLoaded', () => {
     /* Expand cursor on interactive elements */
     document.querySelectorAll('a, button, .btn, .proj-card, .hamburger').forEach(el => {
       el.addEventListener('mouseenter', () => {
-        cursor.style.width   = '18px';
-        cursor.style.height  = '18px';
-        follower.style.width  = '56px';
+        cursor.style.width = '18px';
+        cursor.style.height = '18px';
+        follower.style.width = '56px';
         follower.style.height = '56px';
       });
       el.addEventListener('mouseleave', () => {
-        cursor.style.width   = '10px';
-        cursor.style.height  = '10px';
-        follower.style.width  = '36px';
+        cursor.style.width = '10px';
+        cursor.style.height = '10px';
+        follower.style.width = '36px';
         follower.style.height = '36px';
       });
     });
@@ -60,8 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ── HAMBURGER MENU ── */
-  const hamburger  = document.querySelector('.hamburger');
-  const navMobile  = document.querySelector('.nav-mobile');
+  const hamburger = document.querySelector('.hamburger');
+  const navMobile = document.querySelector('.nav-mobile');
   const navOverlay = document.querySelector('.nav-overlay');
 
   const closeMenu = () => {
@@ -102,12 +102,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const countObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
-        const el  = entry.target;
+        const el = entry.target;
         const end = parseFloat(el.dataset.count);
         const dur = 1800;
         const step = 16;
-        const inc  = end / (dur / step);
-        let cur    = 0;
+        const inc = end / (dur / step);
+        let cur = 0;
         const isFloat = String(end).includes('.');
 
         const update = () => {
@@ -129,9 +129,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (parallaxSections.length && window.innerWidth > 768) {
     const onParallax = () => {
       parallaxSections.forEach(el => {
-        const rect   = el.getBoundingClientRect();
+        const rect = el.getBoundingClientRect();
         const center = rect.top + rect.height / 2 - window.innerHeight / 2;
-        const speed  = parseFloat(el.dataset.parallax) || 0.15;
+        const speed = parseFloat(el.dataset.parallax) || 0.15;
         el.style.setProperty('--parallax-y', `${center * speed}px`);
       });
     };
@@ -153,8 +153,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a[href]').forEach(link => {
       const href = link.getAttribute('href');
       if (!href || href.startsWith('#') || href.startsWith('http') ||
-          href.startsWith('mailto') || href.startsWith('tel') ||
-          href.startsWith('https://wa.me')) return;
+        href.startsWith('mailto') || href.startsWith('tel') ||
+        href.startsWith('https://wa.me')) return;
 
       link.addEventListener('click', e => {
         e.preventDefault();
@@ -165,8 +165,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ── HERO SLIDER (if present) ── */
-  const slides    = document.querySelectorAll('.hero-slide');
-  const dotsWrap  = document.querySelector('.hero-dots');
+  const slides = document.querySelectorAll('.hero-slide');
+  const dotsWrap = document.querySelector('.hero-dots');
 
   if (slides.length > 1) {
     let current = 0;
@@ -203,9 +203,9 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = form.querySelector('[type="submit"]');
-      const name  = form.querySelector('#name')?.value.trim();
+      const name = form.querySelector('#name')?.value.trim();
       const phone = form.querySelector('#phone')?.value.trim();
-      const msg   = form.querySelector('#message')?.value.trim();
+      const msg = form.querySelector('#message')?.value.trim();
 
       if (!name || name.length < 2) { showFormMsg(form, 'Please enter your full name.', 'error'); return; }
       if (!phone || !/^[6-9]\d{9}$/.test(phone)) { showFormMsg(form, 'Please enter a valid 10-digit Indian mobile number.', 'error'); return; }
@@ -222,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
           body: new FormData(form)
         });
         if (res.ok) {
-          showFormMsg(form, '✓ Message received! We'll reach out within 24 hours.', 'success');
+          showFormMsg(form, '✓ Message received! We\'ll reach out within 24 hours.', 'success');
           form.reset();
         } else {
           showFormMsg(form, 'Something went wrong. Please WhatsApp us directly.', 'error');
@@ -244,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
       form.appendChild(el);
     }
     el.textContent = text;
-    el.style.color  = type === 'success' ? '#2E7D32' : '#B71C1C';
+    el.style.color = type === 'success' ? '#2E7D32' : '#B71C1C';
     el.style.fontSize = '0.82rem';
     el.style.marginTop = '1rem';
     el.style.fontFamily = 'Montserrat, sans-serif';

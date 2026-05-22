@@ -211,6 +211,11 @@
   position: relative;
 }
 
+/* Normal layout order */
+.process-step .step-content { order: 1; }
+.process-step .step-number  { order: 2; }
+.process-step .step-visual  { order: 3; }
+
 /* Reverse layout alternation */
 .process-step--reverse .step-content { order: 3; }
 .process-step--reverse .step-number  { order: 2; }
@@ -706,6 +711,9 @@ details[open] .faq-icon {
     grid-template-rows: auto auto;
     gap: 1.5rem;
   }
+  .process-step .step-content,
+  .process-step .step-number,
+  .process-step .step-visual,
   .process-step--reverse .step-content,
   .process-step--reverse .step-number,
   .process-step--reverse .step-visual { order: unset; }
